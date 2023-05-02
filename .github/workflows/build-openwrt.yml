@@ -189,11 +189,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Notification
-      if: cancelled() == false
-      uses: cachenow/action-telegram@v1.1
-      with:
-        botToken: ${{ secrets.BotToken }}
-        chatId: ${{ secrets.ChatID }}
-        jobStatus: ${{ job.status }}
-        skipSuccess: false
+#    - name: Notification
+#      if: cancelled() == false
+#      uses: cachenow/action-telegram@v1.1
+#      with:
+#        botToken: ${{ secrets.BotToken }}
+#        chatId: ${{ secrets.ChatID }}
+#        jobStatus: ${{ job.status }}
+#        skipSuccess: false
