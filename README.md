@@ -6,7 +6,9 @@ Collected errors
 1. luci-app-systools / luci-app-netspeedtest 与 speedtestcli 冲突
 2. luci-app-socat 与 socat 冲突
 
-关闭其中之一即可，因为makefile中已声明依赖关系，无须重复单独安装。主要原因是，两个不同的feed源同时标注了同样的包安装，且其中重复的这个软件包（假设为B）又和另一个软件包（假设为A）存在依赖关系，且这个相互依赖的包在编译过程中已经被安装了，如果再执行一次单独的B安装，就会提示冲突。
+**Note**
+- 关闭其中之一即可，因为makefile中已声明依赖关系，无须重复单独安装。主要原因是，两个不同的feed源同时标注了同样的包安装，且其中重复的这个软件包（假设为B）又和另一个软件包（假设为A）存在依赖关系，且这个相互依赖的包在编译过程中已经被安装了，如果再执行一次单独的B安装，就会提示冲突。
+- 如果两个依赖关系的包都可以独立使用，则在编译时安装其中一个包时，系统会自动检查并安装其依赖的包。当然，为了避免冲突，最好是遵循软件包之间的依赖关系，不要手动单独安装依赖包。这也是为什么在 OpenWrt 中，通常会将所有依赖关系都写在 makefile 中，方便系统自动检测和安装。
 
 ##### 更新:
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/grayearth/BuildAuto?style=for-the-badge&logo=appveyor&label=最新固件)](https://github.com/grayearth/BuildAuto/releases/latest)
