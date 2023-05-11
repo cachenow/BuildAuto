@@ -11,7 +11,7 @@ Collected errors
 - 如果两个依赖关系的包都可以独立使用，则在编译时安装其中一个包时，系统会自动检查并安装其依赖的包。当然，为了避免冲突，最好是遵循软件包之间的依赖关系，不要手动单独安装依赖包。这也是为什么在 OpenWrt 中，通常会将所有依赖关系都写在 makefile 中，方便系统自动检测和安装。
 
 ##### 更新:
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/grayearth/BuildAuto?style=for-the-badge&logo=appveyor&label=最新固件)](https://github.com/grayearth/BuildAuto/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cachenow/BuildAuto?style=for-the-badge&logo=appveyor&label=最新固件)](https://github.com/cachenow/BuildAuto/releases/latest)
 
 
 #### 注意：
