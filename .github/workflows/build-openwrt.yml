@@ -102,33 +102,6 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: Fix uqmi compilation issue
-      run: |
-        cd $OPENWRT_PATH
-        # 备份当前配置
-        cp .config .config.backup
-        
-        # 查找 uqmi 源码位置
-        echo "Finding uqmi source file..."
-        find . -name "dev.c" -path "*/uqmi/*" -type f
-        
-        # 定位 uqmi 源码位置并修改
-        UQMI_SRC=$(find . -name "dev.c" -path "*/uqmi/*" -type f)
-        if [ -n "$UQMI_SRC" ]; then
-          echo "Found uqmi source at: $UQMI_SRC"
-          # 修改 dev.c 文件，将局部变量改为静态变量
-          sed -i 's/bool complete = false/static bool complete = false/' "$UQMI_SRC"
-          
-          # 只清理 uqmi 包的编译缓存
-          make package/network/utils/uqmi/clean
-        else
-          echo "Error: Could not find uqmi source file"
-          exit 1
-        fi
-        
-        # 恢复配置
-        cp .config.backup .config
-
     - name: Download package
       id: package
       run: |
